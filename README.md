@@ -4,27 +4,16 @@
 
 Peformance will be measured using metrics that have been widely adopted for XML and ranking tasks. Precision at $k$ (p$@k$) is one such metric that counts the fraction of correct predictions in the top $k$ scoring labels in $\hat{y}$, and has been widely utilized. The ranking measure Normalized (Discounted) Cumlative Gain at $k$ (nDCG$@k$) as another evaluation metric. The p$@k$ and nDCG$@k$ metrics are defined for a predicted score vector $\hat{\mathbf y} \in {\mathbb{R}}^{L}$ and ground truth label vector $\mathbf y \in \left\lbrace 0, 1 \right\rbrace^L$ as:
 
-$$
-\begin{align}
-        \text{P}@k := \frac{1}{k} \sum_{l\in \text{rank}_k (\hat{\mathbf y})} \mathbf y_l\\[1em]
-        \text{DCG}@k := \sum_{l\in {\text{rank}}_k (\hat{\mathbf y})} \frac{\mathbf y_l}{\log(l+1)}\\[1em]
-        \text{nDCG}@k := \frac{{\text{DCG}}@k}{\sum_{l=1}^{\min(k, \|\mathbf y\|_0)} \frac{1}{\log(l+1)}},\\[1em]
-\end{align}
-$$
+![equation](https://user-images.githubusercontent.com/10142795/169600906-7c464229-cc00-4892-8b81-c5f594a34b63.png)
 
-where, $\text{rank}_k(\mathbf y)$ returns the $k$ largest indices of $\mathbf{y}$ ranked in descending order.
+where, rank$_k(\mathbf y)$ returns the $k$ largest indices of $\mathbf{y}$ ranked in descending order.
 
 For datasets that contain excessively popular labels (often referred to as "head" labels) such as diagnosis codes, high p$@k$ may be achieved by simply predicting head labels repeatedly irrespective of their relevance to the data point. To check for such trivial behavior, it is recommended that XC methods also be evaluated with respect to propensity-scored counterparts of the p$@k$ and nDCG$@k$ metrics (PSP$@k$ and PSnDCG$@k$) described below.
 
-$$
-\begin{align}
-        \text{PSP}@k := \frac{1}{k} \sum_{l\in \text{rank}_k (\hat{\mathbf y})} \frac{\mathbf y_l}{p_l}\\[1em]
-        \text{PSDCG}@k := \sum_{l\in {\text{rank}}_k (\hat{\mathbf y})} \frac{\mathbf y_l}{p_l\log(l+1)}\\[1em]
-        \text{PSnDCG}@k := \frac{{\text{PSDCG}}@k}{\sum_{l=1}^{k} \frac{1}{\log(l+1)}},\\[1em]
-\end{align}
-$$
+![equation-2](https://user-images.githubusercontent.com/10142795/169601026-2103318b-5ec2-46c9-8a6b-849dfe577b05.png)
 
 where $p_l$ is the propensity score for label $l$ which helps in making metrics unbiased with respect to missing labels. Propensity-scored metrics place specific emphasis on performing well on tail labels and give reduced rewards for predicting popular or head labels. For this study we will use metrics$@k$ in $\{1,3,5\}$.
+
 
 Given that as of the time of writing, no relevant paper on this topic exists, the overarching purpose of this project will be to establish a benchmark against which future work can be compared.
 
