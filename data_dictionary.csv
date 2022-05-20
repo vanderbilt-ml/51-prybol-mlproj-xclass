@@ -1,0 +1,45 @@
+﻿Feature,Description
+subject_id (all mimic files),unique identifier which specifies an individual patient. Any rows associated with a single subject_id pertain to the same individual.
+hadm_id (all mimic files),integer identifier which is unique for each patient hospitalization
+seq_num (proc file),order in which the procedures occurred within the hospital stay.
+chart_date (proc file),date of the associated procedures
+icd_code (proc file),ICD procedure code billed
+icd_version (proc file),"There are two versions for this coding system: version 9 (ICD-9) and version 10 (ICD-10). These can be differentiated using the icd_version column. In general, ICD-10 codes are more detailed, though code mappings (or “cross-walks”) exist which convert ICD-9 codes to ICD-10 codes. Both ICD-9 and ICD-10 codes are often presented with a decimal. This decimal is not required for interpretation of an ICD code; i.e. the icd_code of ‘0010’ is equivalent to ‘001.0’."
+seq_num (diag file),"priority assigned to the diagnoses. The priority can be interpreted as a ranking of which diagnoses are “important”, but many caveats to this broad statement exist. For example, patients who are diagnosed with sepsis must have sepsis as their 2nd billed condition. The 1st billed condition must be the infectious agent. There’s also less importance placed on ranking low priority diagnoses “correctly” (as there may be no correct ordering of the priority of the 5th - 10th diagnosis codes, for example).
+"
+icd_code (diag file),ICD-CM diagnosis code
+icd_version (diag file),"There are two versions for this coding system: version 9 (ICD-9) and version 10 (ICD-10). These can be differentiated using the icd_version column. In general, ICD-10 codes are more detailed, though code mappings (or “cross-walks”) exist which convert ICD-9 codes to ICD-10 codes. Both ICD-9 and ICD-10 codes are often presented with a decimal. This decimal is not required for interpretation of an ICD code; i.e. the icd_code of ‘0010’ is equivalent to ‘001.0’."
+gender,patient gender
+anchor_year (patient file),shifted year for the patient
+anchor_year_group (patient file),range of years - the patient’s anchor_year occurred during this range.
+anchor_age (patient file),"patient’s age in the anchor_year. If a patient’s anchor_age is over 89 in the anchor_year then their anchor_age is set to 91, regardless of how old they actually were"
+dod (patient file),data of death
+icd9cm (icd-cm gem file),ICD-9-CM
+icd10cm (icd-cm gem file),ICD-10-CM
+flags (icd-cm gem file),All 5 Flags
+approximate (icd-cm gem file),Approximate Flag-complete meaning of ICD-9/10 codes are not considered equivalent
+no_map (icd-cm gem file),No Map Flag-No ICD-10 code for the ICD-9 code
+combination  (icd-cm gem file),Combination
+scenario  (icd-cm gem file),Scenario
+choice_list (icd-cm gem file),Choice List
+icd9cm (icd-pcs gem file),ICD-9-CM
+icd10cm (icd-pcs gem file),ICD-10-CM
+flags (icd-pcs gem file),All 5 Flags
+approximate (icd-pcs gem file),Approximate Flag-complete meaning of ICD-9/10 codes are not considered equivalent
+no_map (icd-pcs gem file),No Map Flag-No ICD-10 code for the ICD-9 code
+combination (icd-pcs gem file),Combination
+scenario  (icd-pcs gem file),Scenario
+choice_list (icd-pcs gem file),Choice List
+admittime (admissions file),provides the date and time the patient was admitted to the hospital
+dischtime (admissions file),provides the date and time the patient was discharged from the hospital
+deathtime  (admissions file),"provides the time of in-hospital death for the patient if applicable. Note that deathtime is only present if the patient died in-hospital, and is almost always the same as the patient’s dischtime. However, there can be some discrepancies due to typographical errors."
+admission_type  (admissions file),"is useful for classifying the urgency of the admission. There are 9 possibilities: ‘AMBULATORY OBSERVATION’, ‘DIRECT EMER.’, ‘DIRECT OBSERVATION’, ‘ELECTIVE’, ‘EU OBSERVATION’, ‘EW EMER.’, ‘OBSERVATION ADMIT’, ‘SURGICAL SAME DAY ADMISSION’, ‘URGENT’."
+admission_location  (admissions file),"provides information about the location of the patient prior to arriving at the hospital. Note that as the emergency room is technically a clinic, patients who are admitted via the emergency room usually have it as their admission location."
+discharge_location  (admissions file),is the disposition of the patient after they are discharged from the hospital.
+insurance  (admissions file),type of insurance
+language  (admissions file),primarly langague of patient
+marital_status  (admissions file),marital status of patient
+ethnicity  (admissions file),ethnicity of patient
+edregtime  (admissions file),date and time at which the patient was registers in the emergency department 
+edouttime  (admissions file),date and time at which the patient was registers in the emergency department 
+hospital_expire_flag  (admissions file),"This is a binary flag which indicates whether the patient died within the given hospitalization. 1 indicates death in the hospital, and 0 indicates survival to hospital discharge."
