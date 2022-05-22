@@ -24,3 +24,14 @@ Manual creation of data validation rulesets via SME logic is an incredibly time-
 Given the intractability of calculating the absolute number of potential validation rules necessary to capture the entire universe of procedure to diagnosis code relationships, we will instead use an idealized relationship where a single ruleset would be sufficient to capture all of the potential interactions between procedures codes and member demographics necessary to accurately assign a diagnosis code. Complete coverage of the more than 69,000 ICD-10 diagnosis codes would require between $960 Million and $1.9 Billion in pure development costs and between 2,600 and 5,200 FTE years of subject matter expert (SME) effort.
 
 With the understanding that it is unlikely for any ruleset, regardless of complexity, to completely capture all of the possible factors that would lead to the assignment of a particular diagnosis code, we will consider our model to be a suitable replacement for a ruleset for any diagnosis code where P$@k$ exceeds some arbitrary threshold. Using the previously described estimates, we will be able to deduce the value of this model in terms of FTE weeks/years of development effort saved.
+
+** Very well reasoned and thoughtful - you seam knowledgeable about the subject and laying out a project similar to the scope of the class project. Maybe it would be nice to have an appendix listing your sources for some of the math thats going into your work. It might be more ovious to you what your referencing but for someone who isnt as familiar with the math going into a data science project I would find it usful to have sources to look up if needed.
+** Business justifications are nicely layed out as well. Your providing cost/timeline estimates to support your analysis which is extremely useful. 
+
+Example: 
+
+## Appendix: 
+
+source 1: some_web_ref.com
+
+Source 2: some_other_ref.com 
